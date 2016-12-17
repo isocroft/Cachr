@@ -1,0 +1,11 @@
+CACHE MANIFEST
+# 2016-12-16:v0.0.1
+/css/style.css
+# if your server serves dynamic content, then don't include it here
+/index.html 
+
+NETWORK:
+*
+
+FALLBACK:
+/index.html /offline.html

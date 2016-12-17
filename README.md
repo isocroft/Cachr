@@ -13,7 +13,7 @@ It simply implements Application Cache with an easy interface.
 
 # Setting up (How to)
 
-	* [Create an _.appcache_ file](http://) with the name 'manifest' in the root folder of your web project.
+	* (Create an _.appcache_ file)[https://www.sitepoint.com/creating-offline-html5-apps-with-appcache/] with the name <q>manifest</q> in the root folder of your web project.
 	* Copy in the *<q>offline.html</q>* file into the root folder of your web project.
 	* Create your application index file and link it to _Cachr_ using a script tag.
 	* Use the script shown below to activate _Cachr_

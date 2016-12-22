@@ -29,7 +29,7 @@ window.Cachr = window.applicationCache && (function(w){
 	 			stateVal = iframe;
 	 			iframe = w.document.createElement('iframe');
 	 			iframe.id = iframe.name = '__app_cache';
-	 			iframe.style.cssText = 'display:none;position:absolute;left-9999px;';
+	 			iframe.style.cssText = 'display:none;position:absolute;left:-9999px;';
 	 			iframe.src = origin + '/' + 'offline.html';
 	 			w.document.body.appendChild(iframe);
 	 			

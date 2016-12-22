@@ -13,7 +13,7 @@
 
 window.Cachr = window.applicationCache && (function(w){
 
-	var webAppCache = null,
+		var webAppCache = null,
  		updatePollDelay = 3600000, // 1 hour
  		percentLoaded = -1,
  		iframe = null,
@@ -24,7 +24,7 @@ window.Cachr = window.applicationCache && (function(w){
 	 	function go(){ // install the manifest file asynchronously
 		 		var state = w.document.readyState;
 		 		if(state.search(stateVal) == -1){
-		 			setTimeout(arguments.callee, 0);
+		 			return setTimeout(arguments.callee, 0);
 		 		}
 	 			stateVal = iframe;
 	 			iframe = w.document.createElement('iframe');

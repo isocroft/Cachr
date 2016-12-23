@@ -1,0 +1,10 @@
+# Instruct Apache to serve manifest file with correct mime type
+
+AddType text/cache-manifest .appcache # Offline support
+
+# The Application Cache manifest needs not be cached on the client
+
+<FilesMatch ".(appcache|xml)$">
+    Header set Cache-control "no-store, no-cache, no-transform"
+    Header set Expires "1"
+</FilesMatch>

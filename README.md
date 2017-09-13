@@ -17,6 +17,7 @@ It simply implements Application Cache with an easy interface.
 - Copy in the <i><q>offline.html</q></i> file into the root folder of your web project.
 - Create your application index file and link it to _Cachr_ using a script tag.
 - Use the script shown below to activate Cachr
+- Beware of [these pitfalls](https://www.sitepoint.com/common-pitfalls-avoid-using-html5-application-cache/) as you use _applicationCache_ and _Cachr_
 
 ```js
 	<script type="text/javascript">
@@ -38,7 +39,7 @@ And that's all to it.
 
 ## Caveats/Gotchas
 
->If any of the files listed in the _manifest.appcache_ file is modified, the _manifest.appcache_ file itself must also be modified. You can do this by altering the date comment on the second line using a _server script_ or a _cron job_ perhaps so you don't have to do it manually yourself everytime.
+>If any of the files listed in the _manifest.appcache_ file is modified, the _manifest.appcache_ file itself must also be modified. You can do this by altering the date comment on the second line using a _server script_ or a _schedule script_ perhaps so you don't have to do it manually yourself everytime.
 
 # Licence
 

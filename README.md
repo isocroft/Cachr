@@ -8,8 +8,8 @@ It simply implements Application Cache with an easy interface.
 - Internet Explorer 10+
 - Safari 4+
 - Firefox 3.5+
-- Opera 11.5+
-- Chrome 5+
+- Opera 11.6+
+- Chrome 6+
 
 ## Setting up (How to)
 
@@ -41,6 +41,9 @@ And that's all to it.
 
 >If any of the files listed in the _manifest.appcache_ file is modified, the _manifest.appcache_ file itself must also be modified. You can do this by altering the date comment on the second line using a _server script_ or a _schedule script_ perhaps so you don't have to do it manually yourself everytime.
 
-# Licence
+## Licence
 
 MIT license
+
+## Issues/Bugs
+

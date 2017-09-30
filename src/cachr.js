@@ -1,36 +1,43 @@
 /*!
  *
  * File: cachr.js
- * Author: Ifeora Okechukwu
- * Version: 0.2.1
+ * Author: Ifeora Okechukwu (https://twitter.com/isocroft)
+ * Version: 0.2.2
  *
  * Desc: Implements Application Cache with an easy interface
  *	 	for browsers with native support (no polyfills)
  *
- * Support: IE10+, Saf4+, FF3.5+, Opr11.5+, Chrm5+
+ * Support: IE10+, Saf4+, FF3.5+, Opr11.6+, Chrm4+
  *
  */
 
-window.Cachr = window.applicationCache && (function(w){
+window.Cachr = window.applicationCache && (function(w, d, undefined){
 
 		var webAppCache = null,
  		updatePollDelay = 3600000, // 1 hour
  		percentLoaded = -1,
  		iframe = null,
- 		origin = (w.location.origin || w.location.protocol + '//' + w.location.host),
- 		stateVal = /^(load|complet)/,
+ 		origin = w.location.origin,
+ 		stateVal = /^complete$/,
  		__timer = -1;
 
-	 	function go(){ // install the manifest file asynchronously
+	 	function _ready(e){ // install the manifest file asynchronously
 		 		var state = w.document.readyState;
 		 		if(state.search(stateVal) == -1){
-		 			return setTimeout(arguments.callee, 0);
-		 		}
+		 			return undefined;
+		 		}else{
+					if(typeof _ready.__fn == 'function'){
+						_ready.__fn(e);
+					}
+
+					d.onreadystatechange = null;
+				}
+
 	 			stateVal = iframe;
 	 			iframe = w.document.createElement('iframe');
 	 			iframe.id = iframe.name = '__app_cache';
 	 			iframe.style.cssText = 'display:none;position:absolute;left:-9999px;';
-	 			iframe.src = origin + '/' + 'offline.html';
+	 			iframe.src = origin + '/' + (_ready.__offlineFilePath ? _ready.__offlineFilePath : 'offline.html');
 	 			w.document.body.appendChild(iframe);
 	 			
 
@@ -72,8 +79,7 @@ window.Cachr = window.applicationCache && (function(w){
 						}
 
 						webAppCache.onupdateready = function(e){
-							var isAllowed = confirm("This App has been updated against your cache. \n \
-								\b Would you like to refresh your browser to get this update?");
+							var isAllowed = confirm("This App has been updated against your cache. \n\t\t Would you like to refresh your browser to get this update?");
 							__timer = setInterval((function(alwd, cache){
 								if(alwd){
 									w.location.reload();
@@ -119,9 +125,23 @@ window.Cachr = window.applicationCache && (function(w){
 		};
 
 		return {
-			go:function(){
-				setTimeout(go, 0);
+			go:function(options){
+				var changeFn = d.onreadystatechange;
+				
+				if(typeof changeFn == 'function'){
+					_ready.__fn = changeFn;
+				}
+
+				if(options && typeof options == "object"){
+					_ready.__offlineFilePath = options.offline_file_path;
+				}
+
+				if(d.readyState != "complete"){
+					d.onreadystatechange = _ready;
+				}else{
+					_ready({});
+				}
 			}
 		}
 
-}(this));
+}(this, this.document));

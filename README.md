@@ -9,7 +9,7 @@ It simply implements Application Cache with an easy interface.
 - Safari 4+
 - Firefox 3.5+
 - Opera 11.6+
-- Chrome 6+
+- Chrome 4+
 
 ## Setting up (How to)
 

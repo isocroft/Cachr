@@ -1,6 +1,6 @@
 # Cachr
 
-This is a very small library that serves to provide a fallback to **Service Workers** in browser where support is absent. **Application Cache** has relatively good browser support and is well suited for a _service worker fallback_.
+This is a very small library that serves to provide a fallback to **Service Workers** in browser where support is absent. **Application Cache** has relatively good browser support and is well suited for a _service worker fallback_. For iOS support see this [docs link on offline storage on the iPhone](https://developer.apple.com/library/archive/documentation/iPhone/Conceptual/SafariJSDatabaseGuide/OfflineApplicationCache/OfflineApplicationCache.html)
 
 It simply implements Application Cache with an easy interface.
 
